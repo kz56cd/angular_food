@@ -1,0 +1,60 @@
+<div layout="vertical" layout-fill>
+
+  <md-content>
+    <header ng-include="'app/components/navbar/navbar.html'"></header>
+
+    <section class="jumbotron">
+      <h1>F00DO</h1>
+      <p class="lead">
+        <!-- <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br> -->
+        {{msg}}
+      </p>
+      <p><input type="text" ng-model="q"> : sort</p>
+    </section>
+
+    <div class="techs" layout-align="center">
+      <!-- <md-card ng-repeat="awesomeThing in awesomeThings | orderBy:'rank'">
+        <div class="thumbnail">
+          <img class="pull-right" ng-src="assets/images/{{awesomeThing.logo}}" alt="{{awesomeThing.title}}">
+          <div class="caption">
+            <h3>{{awesomeThing.title}}</h3>
+            <p>{{awesomeThing.description}}</p>
+            <p><a ng-href="{{awesomeThing.url}}">{{awesomeThing.url}}</a></p>
+          </div>
+        </div>
+      </md-card> -->
+
+            <div class="bg-info">
+                <p><label>food<label>&nbsp;<input type="text" ng-model="message">&nbsp;
+                <label>price<label>&nbsp;<input type="text" ng-model="price">&nbsp;
+                <label>url<label>&nbsp;<input type="text" ng-model="shopurl">&nbsp;
+                <button ng-click="add()"> 追加 </button></p>
+                <p><button ng-click="deleteAll();">リセットする</button></p>
+            </div>
+            <table class="table table-striped foodlist">
+                <tr>
+                    <th>{{remaining()}}/{{foods.length}}</th>
+                    <th>Food:</th>
+                    <th>Price:</th>
+                    <th>URL;</th>
+                    <th>Date:</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="food in foods | filter:q">
+                    <td><input type="checkbox" ng-model="food.done"></td>
+                    <td>{{food.id}} : <span class="done-{{food.done}}" ng-click="update(food);">{{food.message}}</span></td>
+                    <td><span>{{food.price}}</span></td>
+                    <td><span><a href="{{food.shopurl}}" target="_blank">{{food.shopurl}}</a></span></td>
+                    <td><span>{{food.date}}</span></td>
+                    <td><button ng-click="delete(food);">削除</button></td>
+                </tr>
+            </table>
+    </div>
+    <footer>
+      <md-toolbar layout="row" layout-align="center center">
+        <p> ..And check the <a href="http://www.reddit.com/r/FoodPorn/">FoodPorn</a></p>
+      </md-toolbar>
+    </footer>
+  </md-content>
+
+</div>
